@@ -1,0 +1,13 @@
+name: Setup Python and tox
+description: Install Python and tox (repository must already be checked out)
+
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-python@v5
+      with:
+        python-version: "3.x"
+
+    - name: Install tox
+      shell: bash
+      run: pip install tox

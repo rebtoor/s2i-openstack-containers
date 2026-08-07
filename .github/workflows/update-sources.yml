@@ -14,13 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - uses: actions/setup-python@v5
-        with:
-          python-version: "3.x"
-
-      - name: Install dependencies
-        run: pip install tox
+      - uses: ./.github/actions/setup-tox
 
       - name: Run update-sources
         run: STREAM=master tox -e update-sources

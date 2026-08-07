@@ -1,13 +1,13 @@
-name: Linters
+name: Tests
 
 on: [push, pull_request, workflow_dispatch]
 
 jobs:
-  linters:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: ./.github/actions/setup-tox
 
-      - name: Lint content
-        run: tox -e linters
+      - name: Run unit tests
+        run: tox -e test
