@@ -1,0 +1,14 @@
+---
+- name: Prepare consumer host for buildset registry access
+  hosts: consumer
+  tasks:
+    - name: Ensure Podman is installed and usable
+      ansible.builtin.include_role:
+        name: ensure-podman
+      vars:
+        ensure_podman_rootless: false
+        ensure_podman_validate: true
+
+    - name: Configure buildset registry trust and access
+      ansible.builtin.include_role:
+        name: use-buildset-registry
